@@ -20,7 +20,7 @@ env=environ.Env(
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-print("VARIABLES DE ENTORNO ",env("SECRET_KEY"),env("DEBUG"),env("ALLOWED_HOSTS"),"  ----> esta es una variable")
+print("VARIABLES DE ENTORNO ",env("SECRET_KEY"),env("DEBUG"),env("ALLOWED_HOSTS"),env.db(),"  ----> esta es una variable")
 print("LOG AGREGADO PARA VER SI CAMBIA")
 print("OTRO LOG PARA VER OTRO CAMBIO")
 # Quick-start development settings - unsuitable for production
@@ -83,15 +83,15 @@ WSGI_APPLICATION = "ApiRestDjango.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    "default":{
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME":"postgres",
-        "USER":"postgres",
-        "PASSWORD":"postgres",
-        "HOST":"db",
-        "PORT":"5432"
-        
-    }
+    "default":env.db()
+        #{
+        #"ENGINE": "django.db.backends.postgresql",
+        #"NAME":"tomatoes",
+        #"USER":"postgres",
+        #"PASSWORD":"postgres",
+        #"HOST":"db",
+        #"PORT":"5432"     
+    #}
    #     env.db()
    # {
    #     "ENGINE": "django.db.backends.sqlite3",
@@ -134,3 +134,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'movies.pagination.CustomPagination',
+    'PAGE_SIZE': 10
+}
