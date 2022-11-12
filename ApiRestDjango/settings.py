@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "drf_yasg",
     "movies"
 ]
 
@@ -82,7 +83,7 @@ WSGI_APPLICATION = "ApiRestDjango.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
+DATABASES = { 
     "default":env.db()
         #{
         #"ENGINE": "django.db.backends.postgresql",
