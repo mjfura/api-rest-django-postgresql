@@ -1,0 +1,1 @@
+web: gunicorn ApiRestDjango.wsgi --log-file -
