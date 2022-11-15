@@ -18,6 +18,5 @@ class MovieSerializer(serializers.ModelSerializer):
         model = models.Movie
         fields=("title","description","releaseYear","id","images")
         read_only_fields=("id",)
-        depth=2
         
     
