@@ -8,7 +8,7 @@ from movies import models
    #         "message":"Testing Api Movies"
     #    })
 class MovieViewSet(viewsets.ModelViewSet):
-    queryset=models.Movie.objects.all()
+    queryset=models.Movie.objects.all().order_by("-releaseYear")
     permissions_classes=[permissions.AllowAny]
     serializer_class=serializers.MovieSerializer
 
